@@ -20,6 +20,7 @@ OTHER DEALINGS IN THE SOFTWARE.
  *************************************************************************/
 
 #include <sstream>
+#include <string>
 
 // %Tag(FULLTEXT)%
 // %Tag(ROS_HEADER)%
@@ -28,7 +29,16 @@ OTHER DEALINGS IN THE SOFTWARE.
 // %Tag(MSG_HEADER)%
 #include "std_msgs/String.h"
 // %EndTag(MSG_HEADER)%
+#include "beginner_tutorials/serviceString.h"
 
+std::string temp= "Default Message";
+
+bool string(beginner_tutorials::serviceString::Request &req,
+            beginner_tutorials::serviceString::Response &res) {
+  res.sChanged = req.s;
+  temp = res.sChanged;
+  return true;
+}
 
 /**
  * This tutorial demonstrates simple sending of messages over the ROS system.
@@ -57,6 +67,8 @@ int main(int argc, char **argv) {
   ros::NodeHandle n;
 // %EndTag(NODEHANDLE)%
 
+ ros::ServiceServer server = n.advertiseService("service_string",string);
+
   /**
    * The advertise() function is how you tell ROS that you want to
    * publish on a given topic name. This invokes a call to the ROS
@@ -77,7 +89,6 @@ int main(int argc, char **argv) {
 // %Tag(PUBLISHER)%
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
 // %EndTag(PUBLISHER)%
-
 // %Tag(LOOP_RATE)%
   ros::Rate loop_rate(10);
 // %EndTag(LOOP_RATE)%
@@ -97,7 +108,7 @@ int main(int argc, char **argv) {
     std_msgs::String msg;
 
     std::stringstream ss;
-    ss << "Hello, I'm Raj " << count;
+    ss << temp << count;
     msg.data = ss.str();
 // %EndTag(FILL_MESSAGE)%
 
