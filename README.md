@@ -53,5 +53,5 @@ Open a new Terminal
 rosrun rqt_logger_level rqt_logger_level
 ```
 
-## References
+## Reference
 * http://wiki.ros.org/
