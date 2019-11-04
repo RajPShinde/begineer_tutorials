@@ -31,7 +31,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 // %EndTag(MSG_HEADER)%
 #include "beginner_tutorials/serviceString.h"
 
-std::string temp= "Default Message ";
+std::string temp = "Default Message ";
 
 bool string(beginner_tutorials::serviceString::Request &req,
             beginner_tutorials::serviceString::Response &res) {
@@ -56,13 +56,10 @@ int main(int argc, char **argv) {
    */
   int rate;
   rate = atoi(argv[1]);
-  if(rate < 1)
-  {
-    ROS_FATAL_STREAM( "Rate cannot be 0 ") ;
+  if (rate < 1) {
+    ROS_FATAL_STREAM("Rate cannot be 0 ");
     return 1;
-  }
-  else
-  {
+  } else {
 // %Tag(INIT)%
   ros::init(argc, argv, "talker");
 // %EndTag(INIT)%
@@ -75,9 +72,7 @@ int main(int argc, char **argv) {
 // %Tag(NODEHANDLE)%
   ros::NodeHandle n;
 // %EndTag(NODEHANDLE)%
-
- ros::ServiceServer server = n.advertiseService("service_string",string);
-
+  ros::ServiceServer server = n.advertiseService("service_string", string);
   /**
    * The advertise() function is how you tell ROS that you want to
    * publish on a given topic name. This invokes a call to the ROS
@@ -110,10 +105,10 @@ int main(int argc, char **argv) {
   int count = 0;
   while (ros::ok()) {
 // %EndTag(ROS_OK)%
-    if(rate < 10)
+    if (rate < 10) {
       ROS_WARN_STREAM("Rate is very low");
-  
-    ROS_INFO_STREAM( "Loop Rate is "<< rate ) ;
+    } else {}
+    ROS_INFO_STREAM("Loop Rate is "<< rate);
     /**
      * This is a message object. You stuff it with data, and then publish it.
      */
@@ -122,10 +117,11 @@ int main(int argc, char **argv) {
 
     std::stringstream ss;
     ss << temp << count;
-      if(temp.size() == 0)
+      if (temp.size() == 0) {
   ROS_ERROR_STREAM("String cannot be blank");
-  else
+  } else {
   ROS_DEBUG_STREAM("New String is "<< temp);
+  }
     msg.data = ss.str();
 // %EndTag(FILL_MESSAGE)%
 

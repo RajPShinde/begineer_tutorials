@@ -20,7 +20,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-rajshinde@rajshinde-Inspiron-3543:~/ROS_Workspace/beginner_tutorials/src$ cpplint talker.cpp
+rajshinde@rajshinde-Inspiron-3543:~/catkin_ws/src/beginner_tutorials/src$ cpplint talker.cpp 
+talker.cpp:36:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::serviceString::Request &req  [runtime/references] [2]
+talker.cpp:37:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::serviceString::Response &res  [runtime/references] [2]
 Done processing talker.cpp
-rajshinde@rajshinde-Inspiron-3543:~/ROS_Workspace/beginner_tutorials/src$ cpplint listener.cpp
-Done processing listener.cpp
+Total errors found: 2
+rajshinde@rajshinde-Inspiron-3543:~/catkin_ws/src/beginner_tutorials/src$ cppcheck listener.cpp
+Checking listener.cpp...
