@@ -1,0 +1,14 @@
+<launch>
+<node
+pkg="beginner_tutorials"
+type="talker"
+name="Publisher"
+respawn="true"
+/>
+<node
+pkg="beginner_tutorials"
+type="listener"
+name="Subscriber"
+output="screen"
+/>
+</launch>
