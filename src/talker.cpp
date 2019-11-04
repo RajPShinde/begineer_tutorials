@@ -37,10 +37,6 @@ bool string(beginner_tutorials::serviceString::Request &req,
             beginner_tutorials::serviceString::Response &res) {
   res.sChanged = req.s;
   temp = res.sChanged;
-  if(temp.size() == 0)
-  ROS_ERROR_STREAM("String cannot be blank");
-  else
-  ROS_DEBUG_STREAM("New String is "<< temp);
   return true;
 }
 
@@ -60,7 +56,6 @@ int main(int argc, char **argv) {
    */
   int rate;
   rate = atoi(argv[1]);
-  ROS_INFO_STREAM( "Loop Rate is "<< rate ) ;
   if(rate < 1)
   {
     ROS_FATAL_STREAM( "Rate cannot be 0 ") ;
@@ -68,8 +63,6 @@ int main(int argc, char **argv) {
   }
   else
   {
-    if(rate > 100)
-      ROS_WARN_STREAM("Rate is too High");
 // %Tag(INIT)%
   ros::init(argc, argv, "talker");
 // %EndTag(INIT)%
@@ -117,6 +110,10 @@ int main(int argc, char **argv) {
   int count = 0;
   while (ros::ok()) {
 // %EndTag(ROS_OK)%
+    if(rate < 10)
+      ROS_WARN_STREAM("Rate is very low");
+  
+    ROS_INFO_STREAM( "Loop Rate is "<< rate ) ;
     /**
      * This is a message object. You stuff it with data, and then publish it.
      */
@@ -125,6 +122,10 @@ int main(int argc, char **argv) {
 
     std::stringstream ss;
     ss << temp << count;
+      if(temp.size() == 0)
+  ROS_ERROR_STREAM("String cannot be blank");
+  else
+  ROS_DEBUG_STREAM("New String is "<< temp);
     msg.data = ss.str();
 // %EndTag(FILL_MESSAGE)%
 

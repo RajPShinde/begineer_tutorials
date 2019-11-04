@@ -3,7 +3,7 @@
 <node
 pkg="beginner_tutorials"
 type="talker"
-name="Publisher"
+name="pubTalker"
 respawn="true"
 output="screen"
 args="$(arg rate)"
@@ -11,7 +11,7 @@ args="$(arg rate)"
 <node
 pkg="beginner_tutorials"
 type="listener"
-name="Subscriber"
+name="subListener"
 respawn="true"
 output="screen"
 />
