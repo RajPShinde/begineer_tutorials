@@ -1,14 +1,18 @@
 <launch>
+<arg name="rate" default= "10"/>
 <node
 pkg="beginner_tutorials"
 type="talker"
 name="Publisher"
 respawn="true"
+output="screen"
+args="$(arg rate)"
 />
 <node
 pkg="beginner_tutorials"
 type="listener"
 name="Subscriber"
+respawn="true"
 output="screen"
 />
 </launch>
