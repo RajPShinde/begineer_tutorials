@@ -28,14 +28,7 @@ catkin_make
 ```
 
 ## Run
-1. Run roscore
-```
-cd ~/catkin_ws/
-source ./devel/setup.bash
-roscore
-```
-
-2. Launch both nodes with the launchfile
+1. Launch both nodes with the launchfile
 Open a new Terminal
 ```
 cd ~/catkin_ws/
@@ -43,14 +36,14 @@ source ./devel/setup.bash
 roslaunch beginner_tutorials nodelauncher.launch rate:=8
 ```
 
-3. Run service to change string
+2. Run service to change string
 Open a new Terminal
 ```
 cd ~/catkin_ws/
 source ./devel/setup.bash
 rosservice call /service_string "Enter new string"
 ```
-4. View Log levels using rqt console and rqt logger level
+3. View Log levels using rqt console and rqt logger level
 Open a new Terminal
 ```
 rosrun rqt_console rqt_console

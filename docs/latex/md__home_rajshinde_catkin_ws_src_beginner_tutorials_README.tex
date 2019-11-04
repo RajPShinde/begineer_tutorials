@@ -1,0 +1,69 @@
+\href{https://github.com/RajPShinde/begineer_tutorials/blob/master/LICENSE}{\tt } \href{https://github.com/RajPShinde/begineer_tutorials/blob/master/docs}{\tt }
+
+\subsection*{Authors}
+
+{\bfseries Raj Prakash Shinde} -\/ \href{https://github.com/RajPShinde}{\tt Git\+Hub} ~\newline
+I am a Masters in Robotics Engineering student at the University of Maryland, College Park. My primary area of interest are Legged Robotics and Automation.
+
+\subsection*{Overview}
+
+This is beginners tutorial for creating a simple R\+OS package called begineers\+\_\+tutorials with a Publisher \& Subscriber node. Where a publisher named talker, publishes a message and the subscriber called, listener hears the message. The message type here is a string. A talker node has a service that can be used to change the message content. A launch file can be used to launch both the nodes, which also passes the loop rate as an argument.
+
+\subsection*{Dependencies}
+
+
+\begin{DoxyEnumerate}
+\item Ubuntu 16.\+04
+\item R\+OS Kinetic
+\end{DoxyEnumerate}
+
+\subsection*{Build}
+
+Steps to build 
+\begin{DoxyCode}
+1 mkdir -p ~/catkin\_ws/src
+2 cd ~/catkin\_ws/
+3 catkin\_make
+4 source devel/setup.bash
+5 cd src/
+6 git clone https://github.com/RajPShinde/beginner\_tutorials
+7 cd ~/catkin\_ws/
+8 catkin\_make
+\end{DoxyCode}
+
+
+\subsection*{Run}
+
+
+\begin{DoxyEnumerate}
+\item Launch both nodes with the launchfile Open a new Terminal 
+\begin{DoxyCode}
+1 cd ~/catkin\_ws/
+2 source ./devel/setup.bash
+3 roslaunch beginner\_tutorials nodelauncher.launch rate:=8
+\end{DoxyCode}
+
+\item Run service to change string Open a new Terminal 
+\begin{DoxyCode}
+1 cd ~/catkin\_ws/
+2 source ./devel/setup.bash
+3 rosservice call /service\_string "Enter new string"
+\end{DoxyCode}
+
+\item View Log levels using rqt console and rqt logger level Open a new Terminal 
+\begin{DoxyCode}
+1 rosrun rqt\_console rqt\_console
+\end{DoxyCode}
+ Open a new Terminal 
+\begin{DoxyCode}
+1 rosrun rqt\_logger\_level rqt\_logger\_level
+\end{DoxyCode}
+
+\end{DoxyEnumerate}
+
+\subsection*{References}
+
+
+\begin{DoxyItemize}
+\item \href{http://wiki.ros.org/}{\tt http\+://wiki.\+ros.\+org/} 
+\end{DoxyItemize}

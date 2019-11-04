@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>beginner_tutorials</highlight></codeline>
+<codeline><highlight class="normal">[![License<sp/>MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/RajPShinde/begineer_tutorials/blob/master/LICENSE)</highlight></codeline>
+<codeline><highlight class="normal">[![Docs<sp/>Generated](https://img.shields.io/badge/Docs-Generated-brightgreen.svg)](https://github.com/RajPShinde/begineer_tutorials/blob/master/docs)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Authors</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Raj<sp/>Prakash<sp/>Shinde**<sp/>-<sp/>[GitHub](https://github.com/RajPShinde)</highlight></codeline>
+<codeline><highlight class="normal">&lt;br&gt;I<sp/>am<sp/>a<sp/>Masters<sp/>in<sp/>Robotics<sp/>Engineering<sp/>student<sp/>at<sp/>the<sp/>University<sp/>of<sp/>Maryland,<sp/>College<sp/>Park.<sp/>My<sp/>primary<sp/>area<sp/>of<sp/>interest<sp/>are<sp/>Legged<sp/>Robotics<sp/>and<sp/>Automation.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Overview</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>is<sp/>beginners<sp/>tutorial<sp/>for<sp/>creating<sp/>a<sp/>simple<sp/>ROS<sp/>package<sp/>called<sp/>begineers_tutorials<sp/>with<sp/>a<sp/>Publisher<sp/>&amp;amp;<sp/>Subscriber<sp/>node.<sp/>Where<sp/>a<sp/>publisher<sp/>named<sp/>talker,<sp/>publishes<sp/>a<sp/>message<sp/>and<sp/>the<sp/>subscriber<sp/>called,<sp/>listener<sp/>hears<sp/>the<sp/>message.<sp/>The<sp/>message<sp/>type<sp/>here<sp/>is<sp/>a<sp/>string.<sp/>A<sp/>talker<sp/>node<sp/>has<sp/>a<sp/>service<sp/>that<sp/>can<sp/>be<sp/>used<sp/>to<sp/>change<sp/>the<sp/>message<sp/>content.<sp/>A<sp/>launch<sp/>file<sp/>can<sp/>be<sp/>used<sp/>to<sp/>launch<sp/>both<sp/>the<sp/>nodes,<sp/>which<sp/>also<sp/>passes<sp/>the<sp/>loop<sp/>rate<sp/>as<sp/>an<sp/>argument.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Dependencies</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>Ubuntu<sp/>16.04</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>ROS<sp/>Kinetic</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Build</highlight></codeline>
+<codeline><highlight class="normal">Steps<sp/>to<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">mkdir<sp/>-p<sp/>~/catkin_ws/src</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
+<codeline><highlight class="normal">catkin_make</highlight></codeline>
+<codeline><highlight class="normal">source<sp/>devel/setup.bash</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>src/</highlight></codeline>
+<codeline><highlight class="normal">git<sp/>clone<sp/>https://github.com/RajPShinde/beginner_tutorials</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
+<codeline><highlight class="normal">catkin_make</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Run</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>Launch<sp/>both<sp/>nodes<sp/>with<sp/>the<sp/>launchfile</highlight></codeline>
+<codeline><highlight class="normal">Open<sp/>a<sp/>new<sp/>Terminal</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
+<codeline><highlight class="normal">source<sp/>./devel/setup.bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>beginner_tutorials<sp/>nodelauncher.launch<sp/>rate:=8</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">2.<sp/>Run<sp/>service<sp/>to<sp/>change<sp/>string</highlight></codeline>
+<codeline><highlight class="normal">Open<sp/>a<sp/>new<sp/>Terminal</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
+<codeline><highlight class="normal">source<sp/>./devel/setup.bash</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/service_string<sp/>&quot;Enter<sp/>new<sp/>string&quot;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>View<sp/>Log<sp/>levels<sp/>using<sp/>rqt<sp/>console<sp/>and<sp/>rqt<sp/>logger<sp/>level</highlight></codeline>
+<codeline><highlight class="normal">Open<sp/>a<sp/>new<sp/>Terminal</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>rqt_console<sp/>rqt_console</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">Open<sp/>a<sp/>new<sp/>Terminal</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>rqt_logger_level<sp/>rqt_logger_level</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>References</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>http://wiki.ros.org/</highlight></codeline>
+    </programlisting>
+    <location file="/home/rajshinde/catkin_ws/src/beginner_tutorials/README.md"/>
+  </compounddef>
+</doxygen>

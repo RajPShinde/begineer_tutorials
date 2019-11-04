@@ -1,47 +1,69 @@
-/************************************************************************
-MIT License
-Copyright © 2019 Raj Shinde
-Permission is hereby granted, free of charge, to any person
-obtaining a copy of this software and associated documentation
-files (the “Software”), to deal in the Software without restriction,
-including without limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of the Software,
-and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-The above copyright notice and this permission notice shall be included 
-in all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS
-OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
- *************************************************************************/
+/***************************************************************************
+ MIT License
+
+ Copyright © 2019 Raj Shinde
+ 
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ Files (the “Software”), to deal in the Software without restriction,
+ including without limitation the rights to use, copy, modify, merge,
+ publish, distribute, sublicense, and/or sell copies of the Software,
+ and to permit persons to whom the Software is furnished to do so,
+ subject to the following conditions:
+ The above copyright notice and this permission notice shall be included 
+ in all copies or substantial portions of the Software.
+ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+ ***************************************************************************/
+
+/**
+ *  @copyright MIT License, © 2019 Raj Shinde
+ *  @file    talker.cpp
+ *  @author  Raj Shinde
+ *  @date    11/04/2019
+ *  @version 1.0
+ *  @brief   ROS Publisher Node
+ *  @section DESCRIPTION
+ *  A Publisher node that publishes string message
+ *  @mainpage This is beginners tutorial for creating a simple ROS package
+ */
 
 #include <sstream>
 #include <string>
 
-// %Tag(FULLTEXT)%
-// %Tag(ROS_HEADER)%
 #include "ros/ros.h"
-// %EndTag(ROS_HEADER)%
-// %Tag(MSG_HEADER)%
 #include "std_msgs/String.h"
-// %EndTag(MSG_HEADER)%
+
 #include "beginner_tutorials/serviceString.h"
 
-std::string temp = "Default Message ";
+extern std::string temp = "Default Message ";
 
+/**
+ * @brief Function to provide service functionality
+ * @param beginner_tutorials::serviceString::Request Request argument
+ * @param beginner_tutorials::serviceString::Response Response argumnet
+ * @return true
+ */
 bool string(beginner_tutorials::serviceString::Request &req,
             beginner_tutorials::serviceString::Response &res) {
+/**
+ * Updating the string as per request
+ */
   res.sChanged = req.s;
   temp = res.sChanged;
   return true;
 }
 
 /**
- * This tutorial demonstrates simple sending of messages over the ROS system.
+ * @brief Main function for Publisher
+ * @param argc no of argumnets 
+ * @param argv char pointer consisting arguments 
+ * @return 0
  */
 int main(int argc, char **argv) {
   /**
@@ -56,22 +78,26 @@ int main(int argc, char **argv) {
    */
   int rate;
   rate = atoi(argv[1]);
+
+  /**
+   * Display ROS LOG messae if rate is 0
+   */
   if (rate < 1) {
     ROS_FATAL_STREAM("Rate cannot be 0 ");
     return 1;
   } else {
-// %Tag(INIT)%
   ros::init(argc, argv, "talker");
-// %EndTag(INIT)%
 
   /**
    * NodeHandle is the main access point to communications with the ROS system.
    * The first NodeHandle constructed will fully initialize this node, and the last
    * NodeHandle destructed will close down the node.
    */
-// %Tag(NODEHANDLE)%
   ros::NodeHandle n;
-// %EndTag(NODEHANDLE)%
+
+  /**
+   * Server object used to call the service function 
+   */
   ros::ServiceServer server = n.advertiseService("service_string", string);
   /**
    * The advertise() function is how you tell ROS that you want to
@@ -90,21 +116,18 @@ int main(int argc, char **argv) {
    * than we can send them, the number here specifies how many messages to
    * buffer up before throwing some away.
    */
-// %Tag(PUBLISHER)%
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
-// %EndTag(PUBLISHER)%
-// %Tag(LOOP_RATE)%
   ros::Rate loop_rate(rate);
-// %EndTag(LOOP_RATE)%
 
   /**
    * A count of how many messages we have sent. This is used to create
    * a unique string for each message.
    */
-// %Tag(ROS_OK)%
   int count = 0;
   while (ros::ok()) {
-// %EndTag(ROS_OK)%
+    /**
+     * Display ROS LOG messages on rate status
+     */
     if (rate < 10) {
       ROS_WARN_STREAM("Rate is very low");
     } else {}
@@ -112,22 +135,21 @@ int main(int argc, char **argv) {
     /**
      * This is a message object. You stuff it with data, and then publish it.
      */
-// %Tag(FILL_MESSAGE)%
     std_msgs::String msg;
 
     std::stringstream ss;
     ss << temp << count;
-      if (temp.size() == 0) {
-  ROS_ERROR_STREAM("String cannot be blank");
-  } else {
-  ROS_DEBUG_STREAM("New String is "<< temp);
-  }
-    msg.data = ss.str();
-// %EndTag(FILL_MESSAGE)%
 
-// %Tag(ROSCONSOLE)%
+    /**
+     * Display ROS LOG messages on string status
+     */
+      if (temp.size() == 0) {
+        ROS_ERROR_STREAM("String cannot be blank");
+      } else {
+        ROS_DEBUG_STREAM("New String is "<< temp);
+      }
+    msg.data = ss.str();
     ROS_INFO("%s", msg.data.c_str());
-// %EndTag(ROSCONSOLE)%
 
     /**
      * The publish() function is how you send messages. The parameter
@@ -135,22 +157,11 @@ int main(int argc, char **argv) {
      * given as a template parameter to the advertise<>() call, as was done
      * in the constructor above.
      */
-// %Tag(PUBLISH)%
     chatter_pub.publish(msg);
-// %EndTag(PUBLISH)%
-
-// %Tag(SPINONCE)%
     ros::spinOnce();
-// %EndTag(SPINONCE)%
-
-// %Tag(RATE_SLEEP)%
     loop_rate.sleep();
-// %EndTag(RATE_SLEEP)%
     ++count;
   }
-
-
   return 0;
 }
 }
-// %EndTag(FULLTEXT)%
