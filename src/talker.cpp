@@ -31,12 +31,16 @@ OTHER DEALINGS IN THE SOFTWARE.
 // %EndTag(MSG_HEADER)%
 #include "beginner_tutorials/serviceString.h"
 
-std::string temp= "Default Message";
+std::string temp= "Default Message ";
 
 bool string(beginner_tutorials::serviceString::Request &req,
             beginner_tutorials::serviceString::Response &res) {
   res.sChanged = req.s;
   temp = res.sChanged;
+  if(temp.size() == 0)
+  ROS_ERROR_STREAM("String cannot be blank");
+  else
+  ROS_DEBUG_STREAM("New String is "<< temp);
   return true;
 }
 
@@ -56,7 +60,16 @@ int main(int argc, char **argv) {
    */
   int rate;
   rate = atoi(argv[1]);
-
+  ROS_INFO_STREAM( "Loop Rate is "<< rate ) ;
+  if(rate < 1)
+  {
+    ROS_FATAL_STREAM( "Rate cannot be 0 ") ;
+    return 1;
+  }
+  else
+  {
+    if(rate > 100)
+      ROS_WARN_STREAM("Rate is too High");
 // %Tag(INIT)%
   ros::init(argc, argv, "talker");
 // %EndTag(INIT)%
@@ -141,5 +154,6 @@ int main(int argc, char **argv) {
 
 
   return 0;
+}
 }
 // %EndTag(FULLTEXT)%
