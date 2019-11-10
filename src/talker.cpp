@@ -38,6 +38,9 @@
 
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include <tf/transform_broadcaster.h>
+#include <turtlesim/Pose.h>
+
 
 #include "beginner_tutorials/serviceString.h"
 
@@ -118,7 +121,10 @@ int main(int argc, char **argv) {
    */
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
   ros::Rate loop_rate(rate);
-
+  
+  tf::TransformBroadcaster br;
+  tf::Transform transform;
+  
   /**
    * A count of how many messages we have sent. This is used to create
    * a unique string for each message.
@@ -158,6 +164,11 @@ int main(int argc, char **argv) {
      * in the constructor above.
      */
     chatter_pub.publish(msg);
+    transform.setOrigin( tf::Vector3(10.0, 3.0, 0.0) );
+    tf::Quaternion q;
+    q.setRPY(10, 20, 30);
+    transform.setRotation(q);
+    br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
     ros::spinOnce();
     loop_rate.sleep();
     ++count;
