@@ -21,9 +21,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 rajshinde@rajshinde-Inspiron-3543:~/catkin_ws/src/beginner_tutorials/src$ cpplint talker.cpp 
-talker.cpp:36:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::serviceString::Request &req  [runtime/references] [2]
-talker.cpp:37:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::serviceString::Response &res  [runtime/references] [2]
+talker.cpp:57:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::serviceString::Request &req  [runtime/references] [2]
+talker.cpp:58:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::serviceString::Response &res  [runtime/references] [2]
 Done processing talker.cpp
 Total errors found: 2
-rajshinde@rajshinde-Inspiron-3543:~/catkin_ws/src/beginner_tutorials/src$ cppcheck listener.cpp
-Checking listener.cpp...
+rajshinde@rajshinde-Inspiron-3543:~/catkin_ws/src/beginner_tutorials/src$ cpplint listener.cpp 
+Done processing listener.cpp
+rajshinde@rajshinde-Inspiron-3543:~/catkin_ws/src/beginner_tutorials/test$ cpplint main.cpp
+Done processing main.cpp
+rajshinde@rajshinde-Inspiron-3543:~/catkin_ws/src/beginner_tutorials/test$ cpplint testTalker.cpp
+Done processing testTalker.cpp
+
