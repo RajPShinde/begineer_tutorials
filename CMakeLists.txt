@@ -25,6 +25,7 @@ project(beginner_tutorials)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   tf
+  rostest
   roscpp
   rospy
   std_msgs
@@ -43,10 +44,10 @@ generate_messages(
    std_msgs
 )
 
+catkin_package()
+
 ## Your package locations should be listed before other locations
-include_directories(
-#  include
-  ${catkin_INCLUDE_DIRS}
+include_directories( include ${catkin_INCLUDE_DIRS}
 )
 
 
@@ -57,5 +58,10 @@ target_link_libraries(talker ${catkin_LIBRARIES})
 add_executable(listener src/listener.cpp)
 target_link_libraries(listener ${catkin_LIBRARIES})
 
-add_rostest_gtest(testTalker test/main.cpp test/testTalker.cpp)
-catkin_add_gtest(testTalker test/main.cpp test/testTalker.cpp)
+
+ if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  add_rostest_gtest(testTalker launch/testlauncher.launch test/main.cpp test/testTalker.cpp)
+  target_link_libraries(testTalker ${catkin_LIBRARIES})
+  add_dependencies(testTalker talker beginner_tutorials_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
+ endif()
