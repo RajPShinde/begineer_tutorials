@@ -8,7 +8,7 @@
  *  @section DESCRIPTION
  *  All the test are run
  */
-
+#include <ros/ros.h>
 #include <gtest/gtest.h>
 
 /**
