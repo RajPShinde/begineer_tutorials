@@ -1,0 +1,197 @@
+.TH "md__r_e_a_d_m_e" 3 "Mon Nov 11 2019" "Version 1.0" "beginner_tutorials" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md__r_e_a_d_m_e \- beginner_tutorials 
+\fC\fP \fC\fP
+.PP
+.SS "Authors"
+.PP
+\fBRaj Prakash Shinde\fP - \fCGitHub\fP 
+.br
+I am a Masters in Robotics Engineering student at the University of Maryland, College Park\&. My primary area of interest are Legged Robotics and Automation\&.
+.PP
+.SS "Overview"
+.PP
+This is beginners tutorial for creating a simple ROS package called begineers_tutorials with a Publisher & Subscriber node\&. Where a publisher named talker, publishes a message and the subscriber called, listener hears the message\&. The message type here is a string\&. A talker node has a service that can be used to change the message content\&. A launch file can be used to launch both the nodes, which also passes the loop rate as an argument\&.
+.PP
+.SS "Dependencies"
+.PP
+.IP "1." 4
+Ubuntu 16\&.04
+.IP "2." 4
+ROS Kinetic
+.PP
+.PP
+.SS "Build"
+.PP
+Steps to build 
+.PP
+.nf
+1 mkdir -p ~/catkin_ws/src
+2 cd ~/catkin_ws/
+3 catkin_make
+4 source devel/setup\&.bash
+5 cd src/
+6 git clone https://github\&.com/RajPShinde/beginner_tutorials
+7 cd ~/catkin_ws/
+8 catkin_make
+
+.fi
+.PP
+.PP
+.SS "Run"
+.PP
+.IP "1." 4
+Launch both nodes Individually Run roscore (Open a Terminal) 
+.PP
+.nf
+1 cd ~/catkin_ws/
+2 source \&./devel/setup\&.bash
+3 roscore
+
+.fi
+.PP
+ Run talker node (Open a new Terminal) 
+.PP
+.nf
+1 cd ~/catkin_ws/
+2 source \&./devel/setup\&.bash
+3 rosrun beginner_tutorials talker 10
+
+.fi
+.PP
+ Run listener node (Open a new Terminal) 
+.PP
+.nf
+1 cd ~/catkin_ws/
+2 source \&./devel/setup\&.bash
+3 rosrun beginner_tutorials listener
+
+.fi
+.PP
+
+.IP "2." 4
+Launch both nodes with the launchfile (Open a new Terminal) 
+.PP
+.nf
+1 cd ~/catkin_ws/
+2 source \&./devel/setup\&.bash
+3 roslaunch beginner_tutorials nodelauncher\&.launch
+
+.fi
+.PP
+ You can change the frequency by passing an argumnet, default is 10 (Open a new Terminal) 
+.PP
+.nf
+1 cd ~/catkin_ws/
+2 source \&./devel/setup\&.bash
+3 roslaunch beginner_tutorials nodelauncher\&.launch rate:=8
+
+.fi
+.PP
+
+.IP "3." 4
+Run service to change string launch both nodes and then Open a new Terminal 
+.PP
+.nf
+1 cd ~/catkin_ws/
+2 source \&./devel/setup\&.bash
+3 rosservice call /service_string "Enter new string"
+
+.fi
+.PP
+
+.IP "4." 4
+To view Log levels using rqt console and rqt logger level Open a new Terminal 
+.PP
+.nf
+1 rosrun rqt_console rqt_console
+
+.fi
+.PP
+ Open a new Terminal 
+.PP
+.nf
+1 rosrun rqt_logger_level rqt_logger_level
+
+.fi
+.PP
+
+.IP "5." 4
+Inspecting TF Frames After launching both nodes using launch file, we can inspect the TF frames using tf_echo and rqt_tf_tree (Open a new Terminal)
+.PP
+.PP
+.PP
+.nf
+1 rosrun tf tf_echo /world /talk
+.fi
+.PP
+ To genereate a pdf of tf frame 
+.PP
+.nf
+1 rosrun tf view_frames
+
+.fi
+.PP
+ Open a new Terminal 
+.PP
+.nf
+1 rosrun rqt_tf_tree rqt_tf_tree
+
+.fi
+.PP
+.PP
+.IP "6." 4
+Run Test Open a new Terminal 
+.PP
+.nf
+1 cd ~/catkin_ws
+2 source \&./devel/setup\&.bash
+3 catkin_make run_tests_beginner_tutorials
+4 rostest beginner_tutorials testlauncher\&.launch
+
+.fi
+.PP
+
+.IP "7." 4
+Record in Rosbag To record in a rosbag, pass a true argument to the launch file(Open a new Terminal) 
+.PP
+.nf
+1 roslaunch beginner_tutorials nodelauncher\&.launch recordbag:=true
+
+.fi
+.PP
+ To avoid recording, either pass false or don't pass any argument 
+.PP
+.nf
+1 roslaunch beginner_tutorials nodelauncher\&.launch recordbag:=false
+
+.fi
+.PP
+ OR 
+.PP
+.nf
+1 roslaunch beginner_tutorials nodelauncher\&.launch
+
+.fi
+.PP
+
+.IP "8." 4
+Use Rosbag First launch the listener node and then Open a new Terminal and play rosbag 
+.PP
+.nf
+1 cd ~/catkin_ws/src/beginner_tutorials/results
+2 rosbag play recording\&.bag
+
+.fi
+.PP
+ You can see that the listener node can hear the rosbag data of previously recorded talker node\&.
+.PP
+.PP
+.SS "Reference"
+.PP
+.IP "\(bu" 2
+http://wiki.ros.org/ 
+.PP
+

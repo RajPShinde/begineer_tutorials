@@ -1,0 +1,94 @@
+.TH "src/listener.cpp" 3 "Mon Nov 11 2019" "Version 1.0" "beginner_tutorials" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/listener.cpp \- ROS Subscriber Node\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <ros/ros\&.h>\fP
+.br
+\fC#include <std_msgs/String\&.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBchatterCallback\fP (const std_msgs::String::ConstPtr &msg)"
+.br
+.RI "\fIfunction to print LOG message on terminal \fP"
+.ti -1c
+.RI "int \fBmain\fP (int argc, char **argv)"
+.br
+.RI "\fIMain function for Subscriber\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+ROS Subscriber Node\&. 
+
+
+.PP
+\fBCopyright:\fP
+.RS 4
+MIT License, © 2019 Raj Shinde
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Raj Shinde 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+11/10/2019 
+.RE
+.PP
+\fBVersion:\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+.SH "DESCRIPTION"
+.PP
+A Subscriber node that subscibes to talker 
+.SH "Function Documentation"
+.PP 
+.SS "void chatterCallback (const std_msgs::String::ConstPtr & msg)"
+
+.PP
+function to print LOG message on terminal 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstd_msgs::String::ConstPtr&\fP published string 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+None 
+.RE
+.PP
+
+.SS "int main (int argc, char ** argv)"
+
+.PP
+Main function for Subscriber\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargc\fP no of argumnets 
+.br
+\fIargv\fP char pointer consisting arguments 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for beginner_tutorials from the source code\&.

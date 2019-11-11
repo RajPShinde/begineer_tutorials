@@ -2,56 +2,62 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="talker_8cpp" kind="file" language="C++">
     <compoundname>talker.cpp</compoundname>
+    <includes local="no">ros/ros.h</includes>
+    <includes local="no">std_msgs/String.h</includes>
+    <includes local="no">tf/transform_broadcaster.h</includes>
     <includes local="no">sstream</includes>
     <includes local="no">string</includes>
-    <includes local="yes">ros/ros.h</includes>
-    <includes local="yes">std_msgs/String.h</includes>
     <includes local="yes">beginner_tutorials/serviceString.h</includes>
     <incdepgraph>
-      <node id="19">
+      <node id="33">
+        <label>tf/transform_broadcaster.h</label>
+      </node>
+      <node id="35">
         <label>string</label>
       </node>
-      <node id="17">
-        <label>/home/rajshinde/catkin_ws/src/beginner_tutorials/src/talker.cpp</label>
+      <node id="30">
+        <label>src/talker.cpp</label>
         <link refid="talker.cpp"/>
-        <childnode refid="18" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="36">
         <label>beginner_tutorials/serviceString.h</label>
       </node>
-      <node id="18">
+      <node id="34">
         <label>sstream</label>
       </node>
-      <node id="20">
+      <node id="31">
         <label>ros/ros.h</label>
       </node>
-      <node id="21">
+      <node id="32">
         <label>std_msgs/String.h</label>
       </node>
     </incdepgraph>
+    <innerclass refid="struct_x" prot="public">X</innerclass>
       <sectiondef kind="var">
-      <memberdef kind="variable" id="talker_8cpp_1ab4746180b02b2a3ea6714c0cbbd890ed" prot="public" static="no" mutable="no">
-        <type><ref refid="talker_8cpp_1a0ba76bcac54e80d914f29f0c76d947be" kindref="member">std::string</ref></type>
-        <definition>std::string temp</definition>
+      <memberdef kind="variable" id="talker_8cpp_1a713043a7f1ef60dd29454fe66fb0db59" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="struct_x" kindref="compound">X</ref></type>
+        <definition>struct X  t</definition>
         <argsstring></argsstring>
-        <name>temp</name>
-        <initializer>= &quot;Default Message &quot;</initializer>
+        <name>t</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/rajshinde/catkin_ws/src/beginner_tutorials/src/talker.cpp" line="44" column="1"/>
+        <location file="src/talker.cpp" line="48" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -89,8 +95,8 @@
 <simplesect kind="return"><para>true </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
-<para>Updating the string as per request</para>        </inbodydescription>
-        <location file="/home/rajshinde/catkin_ws/src/beginner_tutorials/src/talker.cpp" line="52" column="1" bodyfile="/home/rajshinde/catkin_ws/src/beginner_tutorials/src/talker.cpp" bodystart="52" bodyend="60"/>
+        </inbodydescription>
+        <location file="src/talker.cpp" line="57" column="1" bodyfile="src/talker.cpp" bodystart="57" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="talker_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -126,8 +132,8 @@
 <simplesect kind="return"><para>0 </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
-<para>The ros::init() function needs to see argc and argv so that it can perform any ROS arguments and name remapping that were provided at the command line. For programmatic remappings you can use a different version of init() which takes remappings directly, but for most command-line programs, passing argc and argv is the easiest way to do it. The third argument to init() is the name of the node.</para><para>You must call one of the versions of ros::init() before using any other part of the ROS system.</para><para>Display ROS LOG messae if rate is 0</para><para>NodeHandle is the main access point to communications with the ROS system. The first NodeHandle constructed will fully initialize this node, and the last NodeHandle destructed will close down the node.</para><para>Server object used to call the service function</para><para>The advertise() function is how you tell ROS that you want to publish on a given topic name. This invokes a call to the ROS master node, which keeps a registry of who is publishing and who is subscribing. After this advertise() call is made, the master node will notify anyone who is trying to subscribe to this topic name, and they will in turn negotiate a peer-to-peer connection with this node. advertise() returns a Publisher object which allows you to publish messages on that topic through a call to publish(). Once all copies of the returned Publisher object are destroyed, the topic will be automatically unadvertised.</para><para>The second parameter to advertise() is the size of the message queue used for publishing messages. If messages are published more quickly than we can send them, the number here specifies how many messages to buffer up before throwing some away.</para><para>A count of how many messages we have sent. This is used to create a unique string for each message.</para><para>Display ROS LOG messages on rate status</para><para>This is a message object. You stuff it with data, and then publish it.</para><para>Display ROS LOG messages on string status</para><para>The publish() function is how you send messages. The parameter is the message object. The type of this object must agree with the type given as a template parameter to the advertise&lt;&gt;() call, as was done in the constructor above.</para>        </inbodydescription>
-        <location file="/home/rajshinde/catkin_ws/src/beginner_tutorials/src/talker.cpp" line="68" column="1" bodyfile="/home/rajshinde/catkin_ws/src/beginner_tutorials/src/talker.cpp" bodystart="68" bodyend="167"/>
+        </inbodydescription>
+        <location file="src/talker.cpp" line="71" column="1" bodyfile="src/talker.cpp" bodystart="71" bodyend="168"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -135,11 +141,11 @@
     <detaileddescription>
 <para><simplesect kind="copyright"><para>MIT License, © 2019 Raj Shinde</para></simplesect>
 <simplesect kind="author"><para>Raj Shinde </para></simplesect>
-<simplesect kind="date"><para>11/04/2019 </para></simplesect>
+<simplesect kind="date"><para>11/10/2019 </para></simplesect>
 <simplesect kind="version"><para>1.0 </para></simplesect>
-</para><sect1 id="talker_8cpp_1DESCRIPTION">
+</para><sect1 id="test_talker_8cpp_1DESCRIPTION">
 <title>DESCRIPTION</title>
-<para>A Publisher node that publishes string message </para></sect1>
+<para>A Publisher node that publishes tf frame </para></sect1>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/***************************************************************************</highlight></codeline>
@@ -165,67 +171,128 @@
 <codeline lineno="21"><highlight class="comment"><sp/>OTHER<sp/>DEALINGS<sp/>IN<sp/>THE<sp/>SOFTWARE.</highlight></codeline>
 <codeline lineno="22"><highlight class="comment"><sp/>***************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ros/ros.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;std_msgs/String.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;beginner_tutorials/serviceString.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="talker_8cpp_1a0ba76bcac54e80d914f29f0c76d947be" kindref="member">std::string</ref><sp/>temp<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Default<sp/>Message<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="talker_8cpp_1a0ba76bcac54e80d914f29f0c76d947be" kindref="member">string</ref>(beginner_tutorials::serviceString::Request<sp/>&amp;req,</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>beginner_tutorials::serviceString::Response<sp/>&amp;res)<sp/>{</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/>res.sChanged<sp/>=<sp/>req.s;</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/>temp<sp/>=<sp/>res.sChanged;</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="talker_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**argv)<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor">#include<sp/>&lt;ros/ros.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;std_msgs/String.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tf/transform_broadcaster.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;beginner_tutorials/serviceString.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Creating<sp/>a<sp/>struct<sp/>containing<sp/>a<sp/>string</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="struct_x" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_x" kindref="compound">X</ref><sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><ref refid="talker_8cpp_1a0ba76bcac54e80d914f29f0c76d947be" kindref="member">std::string</ref><sp/>temp;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}<sp/>t;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="talker_8cpp_1a0ba76bcac54e80d914f29f0c76d947be" kindref="member">string</ref>(beginner_tutorials::serviceString::Request<sp/>&amp;req,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>beginner_tutorials::serviceString::Response<sp/>&amp;res)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Updating<sp/>the<sp/>string<sp/>as<sp/>per<sp/>request</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>res.sChanged<sp/>=<sp/>req.s;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>t.temp<sp/>=<sp/>res.sChanged;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="talker_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**argv)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>ros::init()<sp/>function<sp/>needs<sp/>to<sp/>see<sp/>argc<sp/>and<sp/>argv<sp/>so<sp/>that<sp/>it<sp/>can<sp/>perform</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>any<sp/>ROS<sp/>arguments<sp/>and<sp/>name<sp/>remapping<sp/>that<sp/>were<sp/>provided<sp/>at<sp/>the<sp/>command</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>line.<sp/>For<sp/>programmatic<sp/>remappings<sp/>you<sp/>can<sp/>use<sp/>a<sp/>different<sp/>version<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>init()<sp/>which<sp/>takes<sp/>remappings<sp/>directly,<sp/>but<sp/>for<sp/>most<sp/>command-line<sp/>programs,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>passing<sp/>argc<sp/>and<sp/>argv<sp/>is<sp/>the<sp/>easiest<sp/>way<sp/>to<sp/>do<sp/>it.<sp/><sp/>The<sp/>third<sp/>argument<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>init()<sp/>is<sp/>the<sp/>name<sp/>of<sp/>the<sp/>You<sp/>must<sp/>call<sp/>one<sp/>of<sp/>the<sp/>versions<sp/>of<sp/>ros::init()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>before<sp/>using<sp/>any<sp/>other<sp/>node.<sp/>part<sp/>of<sp/>the<sp/>ROS<sp/>system.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rate;</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/>rate<sp/>=<sp/>atoi(argv[1]);</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rate<sp/>&lt;<sp/>1)<sp/>{</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>ROS_FATAL_STREAM(</highlight><highlight class="stringliteral">&quot;Rate<sp/>cannot<sp/>be<sp/>0<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/>ros::init(argc,<sp/>argv,<sp/></highlight><highlight class="stringliteral">&quot;talker&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/>ros::NodeHandle<sp/>n;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>t.temp<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Default<sp/>Message<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Display<sp/>ROS<sp/>LOG<sp/>messae<sp/>if<sp/>rate<sp/>is<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rate<sp/>&lt;<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>ROS_FATAL_STREAM(</highlight><highlight class="stringliteral">&quot;Rate<sp/>cannot<sp/>be<sp/>0<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>ros::init(argc,<sp/>argv,<sp/></highlight><highlight class="stringliteral">&quot;talker&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>NodeHandle<sp/>is<sp/>the<sp/>main<sp/>access<sp/>point<sp/>to<sp/>communications<sp/>with<sp/>the<sp/>ROS<sp/>system.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>first<sp/>NodeHandle<sp/>constructed<sp/>will<sp/>fully<sp/>initialize<sp/>this<sp/>node,<sp/>and<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>lastNodeHandle<sp/>destructed<sp/>will<sp/>close<sp/>down<sp/>the<sp/>node.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/>ros::NodeHandle<sp/>n;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Server<sp/>object<sp/>used<sp/>to<sp/>call<sp/>the<sp/>service<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>ros::ServiceServer<sp/>server<sp/>=<sp/>n.advertiseService(</highlight><highlight class="stringliteral">&quot;service_string&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/>ros::ServiceServer<sp/>server<sp/>=<sp/>n.advertiseService(</highlight><highlight class="stringliteral">&quot;service_string&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/>ros::Publisher<sp/>chatter_pub<sp/>=<sp/>n.advertise&lt;std_msgs::String&gt;(</highlight><highlight class="stringliteral">&quot;chatter&quot;</highlight><highlight class="normal">,<sp/>1000);</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/>ros::Rate<sp/>loop_rate(rate);</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(ros::ok())<sp/>{</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rate<sp/>&lt;<sp/>10)<sp/>{</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ROS_WARN_STREAM(</highlight><highlight class="stringliteral">&quot;Rate<sp/>is<sp/>very<sp/>low&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{}</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>ROS_INFO_STREAM(</highlight><highlight class="stringliteral">&quot;Loop<sp/>Rate<sp/>is<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>rate);</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>std_msgs::String<sp/>msg;</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>std::stringstream<sp/>ss;</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>ss<sp/>&lt;&lt;<sp/>temp<sp/>&lt;&lt;<sp/>count;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>advertise()<sp/>function<sp/>is<sp/>how<sp/>you<sp/>tell<sp/>ROS<sp/>that<sp/>you<sp/>want<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>publish<sp/>on<sp/>a<sp/>given<sp/>topic<sp/>name.<sp/>This<sp/>invokes<sp/>a<sp/>call<sp/>to<sp/>the<sp/>ROS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>master<sp/>node,<sp/>which<sp/>keeps<sp/>a<sp/>registry<sp/>of<sp/>who<sp/>is<sp/>publishing<sp/>and<sp/>who</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>is<sp/>subscribing.<sp/>After<sp/>this<sp/>advertise()<sp/>call<sp/>is<sp/>made,<sp/>the<sp/>master</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>node<sp/>will<sp/>notify<sp/>anyone<sp/>who<sp/>is<sp/>trying<sp/>to<sp/>subscribe<sp/>to<sp/>this<sp/>topic<sp/>name,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>they<sp/>will<sp/>in<sp/>turn<sp/>negotiate<sp/>a<sp/>peer-to-peer<sp/>connection<sp/>with<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>node.<sp/><sp/>advertise()<sp/>returns<sp/>a<sp/>Publisher<sp/>object<sp/>which<sp/>allows<sp/>you<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>publish<sp/>messages<sp/>on<sp/>that<sp/>topic<sp/>through<sp/>a<sp/>call<sp/>to<sp/>publish().<sp/><sp/>Once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>all<sp/>copies<sp/>of<sp/>the<sp/>returned<sp/>Publisher<sp/>object<sp/>are<sp/>destroyed,<sp/>the<sp/>topic</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>will<sp/>be<sp/>automatically<sp/>unadvertised.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>second<sp/>parameter<sp/>to<sp/>advertise()<sp/>is<sp/>the<sp/>size<sp/>of<sp/>the<sp/>message<sp/>queue</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>used<sp/>for<sp/>publishing<sp/>messages.<sp/><sp/>If<sp/>messages<sp/>are<sp/>published<sp/>more<sp/>quickly</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>than<sp/>we<sp/>can<sp/>send<sp/>them,<sp/>the<sp/>number<sp/>here<sp/>specifies<sp/>how<sp/>many<sp/>messages<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>buffer<sp/>up<sp/>before<sp/>throwing<sp/>some<sp/>away.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/>ros::Publisher<sp/>chatter_pub<sp/>=<sp/>n.advertise&lt;std_msgs::String&gt;(</highlight><highlight class="stringliteral">&quot;chatter&quot;</highlight><highlight class="normal">,<sp/>1000);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/>ros::Rate<sp/>loop_rate(rate);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Creating<sp/>Objects</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>tf::TransformBroadcaster<sp/>br;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/>tf::Transform<sp/>transform;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>count<sp/>of<sp/>how<sp/>many<sp/>messages<sp/>we<sp/>have<sp/>sent.<sp/>This<sp/>is<sp/>used<sp/>to<sp/>create</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>unique<sp/>string<sp/>for<sp/>each<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(ros::ok())<sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Display<sp/>ROS<sp/>LOG<sp/>messages<sp/>on<sp/>rate<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rate<sp/>&lt;<sp/>10)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ROS_WARN_STREAM(</highlight><highlight class="stringliteral">&quot;Rate<sp/>is<sp/>very<sp/>low&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>ROS_INFO_STREAM(</highlight><highlight class="stringliteral">&quot;Loop<sp/>Rate<sp/>is<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>rate);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>a<sp/>message<sp/>object.<sp/>You<sp/>stuff<sp/>it<sp/>with<sp/>data,<sp/>and<sp/>then<sp/>publish<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>std_msgs::String<sp/>msg;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>std::stringstream<sp/>ss;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>ss<sp/>&lt;&lt;<sp/>t.temp<sp/>&lt;&lt;<sp/>count;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Display<sp/>ROS<sp/>LOG<sp/>messages<sp/>on<sp/>string<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(t.temp.size()<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_ERROR_STREAM(</highlight><highlight class="stringliteral">&quot;String<sp/>cannot<sp/>be<sp/>blank&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_DEBUG_STREAM(</highlight><highlight class="stringliteral">&quot;New<sp/>String<sp/>is<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>t.temp);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.data<sp/>=<sp/>ss.str();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>ROS_INFO(</highlight><highlight class="stringliteral">&quot;%s&quot;</highlight><highlight class="normal">,<sp/>msg.data.c_str());</highlight></codeline>
 <codeline lineno="142"><highlight class="normal"></highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(temp.size()<sp/>==<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_ERROR_STREAM(</highlight><highlight class="stringliteral">&quot;String<sp/>cannot<sp/>be<sp/>blank&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_DEBUG_STREAM(</highlight><highlight class="stringliteral">&quot;New<sp/>String<sp/>is<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>temp);</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.data<sp/>=<sp/>ss.str();</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>ROS_INFO(</highlight><highlight class="stringliteral">&quot;%s&quot;</highlight><highlight class="normal">,<sp/>msg.data.c_str());</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"></highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>chatter_pub.publish(msg);</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::spinOnce();</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>loop_rate.sleep();</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>++count;</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="166"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>publish()<sp/>function<sp/>is<sp/>how<sp/>you<sp/>send<sp/>messages.<sp/>The<sp/>parameter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>is<sp/>the<sp/>message<sp/>object.<sp/>The<sp/>type<sp/>of<sp/>this<sp/>object<sp/>must<sp/>agree<sp/>with<sp/>the<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>given<sp/>as<sp/>a<sp/>template<sp/>parameter<sp/>to<sp/>the<sp/>advertise&lt;&gt;()<sp/>call,<sp/>as<sp/>was<sp/>done</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>in<sp/>the<sp/>constructor<sp/>above.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>chatter_pub.publish(msg);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>origin<sp/>coordinates</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>transform.setOrigin(tf::Vector3(10.0,<sp/>3.0,<sp/>0.0));</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Creating<sp/>a<sp/>Quaternion<sp/>Object</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>tf::Quaternion<sp/>q;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>Roll,<sp/>Pitch<sp/>&amp;<sp/>Yaw</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>q.setRPY(10,<sp/>20,<sp/>30);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>transform.setRotation(q);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Broadcast<sp/>the<sp/>transform</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>br.sendTransform(tf::StampedTransform(transform,</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ros::Time::now(),<sp/></highlight><highlight class="stringliteral">&quot;world&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;talk&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::spinOnce();</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>loop_rate.sleep();</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>++count;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="167"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/rajshinde/catkin_ws/src/beginner_tutorials/src/talker.cpp"/>
+    <location file="src/talker.cpp"/>
   </compounddef>
 </doxygen>

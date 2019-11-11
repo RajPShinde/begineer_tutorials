@@ -1,0 +1,118 @@
+.TH "src/talker.cpp" 3 "Mon Nov 11 2019" "Version 1.0" "beginner_tutorials" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/talker.cpp \- ROS Publisher Node\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <ros/ros\&.h>\fP
+.br
+\fC#include <std_msgs/String\&.h>\fP
+.br
+\fC#include <tf/transform_broadcaster\&.h>\fP
+.br
+\fC#include <sstream>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include 'beginner_tutorials/serviceString\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBX\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBstring\fP (beginner_tutorials::serviceString::Request &req, beginner_tutorials::serviceString::Response &res)"
+.br
+.RI "\fIFunction to provide service functionality\&. \fP"
+.ti -1c
+.RI "int \fBmain\fP (int argc, char **argv)"
+.br
+.RI "\fIMain function for Publisher\&. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "struct \fBX\fP \fBt\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+ROS Publisher Node\&. 
+
+
+.PP
+\fBCopyright:\fP
+.RS 4
+MIT License, © 2019 Raj Shinde
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Raj Shinde 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+11/10/2019 
+.RE
+.PP
+\fBVersion:\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+.SH "DESCRIPTION"
+.PP
+A Publisher node that publishes tf frame 
+.SH "Function Documentation"
+.PP 
+.SS "int main (int argc, char ** argv)"
+
+.PP
+Main function for Publisher\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargc\fP no of argumnets 
+.br
+\fIargv\fP char pointer consisting arguments 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 
+.RE
+.PP
+
+.SS "bool string (beginner_tutorials::serviceString::Request & req, beginner_tutorials::serviceString::Response & res)"
+
+.PP
+Function to provide service functionality\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbeginner_tutorials::serviceString::Request\fP Request argument 
+.br
+\fIbeginner_tutorials::serviceString::Response\fP Response argumnet 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for beginner_tutorials from the source code\&.

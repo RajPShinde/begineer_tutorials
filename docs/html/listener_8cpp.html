@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>beginner-tutorials: /home/rajshinde/catkin_ws/src/beginner_tutorials/src/listener.cpp File Reference</title>
+<title>beginner_tutorials: src/listener.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,10 +23,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">beginner-tutorials
+   <div id="projectname">beginner_tutorials
    &#160;<span id="projectnumber">1.0</span>
    </div>
-   <div id="projectbrief">beginner-tutorials</div>
   </td>
  </tr>
  </tbody>
@@ -41,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -95,12 +95,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>ROS Subscriber Node.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;ros/ros.h&quot;</code><br />
-<code>#include &quot;std_msgs/String.h&quot;</code><br />
+<div class="textblock"><code>#include &lt;ros/ros.h&gt;</code><br />
+<code>#include &lt;std_msgs/String.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for listener.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="listener_8cpp__incl.png" border="0" usemap="#_2home_2rajshinde_2catkin__ws_2src_2beginner__tutorials_2src_2listener_8cpp" alt=""/></div>
+<div class="center"><img src="listener_8cpp__incl.png" border="0" usemap="#src_2listener_8cpp" alt=""/></div>
+<map name="src_2listener_8cpp" id="src_2listener_8cpp">
+</map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -116,7 +118,7 @@ Functions</h2></td></tr>
 <div class="textblock"><p>ROS Subscriber Node. </p>
 <dl class="section copyright"><dt>Copyright</dt><dd>MIT License, © 2019 Raj Shinde</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Raj Shinde </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>11/04/2019 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>11/10/2019 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <h1><a class="anchor" id="DESCRIPTION"></a>
 DESCRIPTION</h1>
@@ -180,12 +182,6 @@ DESCRIPTION</h1>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 </dd></dl>
-<p>The ros::init() function needs to see argc and argv so that it can perform any ROS arguments and name remapping that were provided at the command line. For programmatic remappings you can use a different version of init() which takes remappings directly, but for most command-line programs, passing argc and argv is the easiest way to do it. The third argument to init() is the name of the node.</p>
-<p>You must call one of the versions of ros::init() before using any other part of the ROS system.</p>
-<p>NodeHandle is the main access point to communications with the ROS system. The first NodeHandle constructed will fully initialize this node, and the last NodeHandle destructed will close down the node.</p>
-<p>The subscribe() call is how you tell ROS that you want to receive messages on a given topic. This invokes a call to the ROS master node, which keeps a registry of who is publishing and who is subscribing. Messages are passed to a callback function, here called chatterCallback. subscribe() returns a Subscriber object that you must hold on to until you want to unsubscribe. When all copies of the Subscriber object go out of scope, this callback will automatically be unsubscribed from this topic.</p>
-<p>The second parameter to the subscribe() function is the size of the message queue. If messages are arriving faster than they are being processed, this is the number of messages that will be buffered up before beginning to throw away the oldest ones.</p>
-<p>ros::spin() will enter a loop, pumping callbacks. With this version, all callbacks will be called from within this thread (the main one). ros::spin() will exit when Ctrl-C is pressed, or the node is shutdown by the master.</p>
 
 </div>
 </div>

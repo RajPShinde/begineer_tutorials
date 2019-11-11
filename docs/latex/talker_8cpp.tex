@@ -1,22 +1,29 @@
-\hypertarget{talker_8cpp}{}\section{/home/rajshinde/catkin\+\_\+ws/src/beginner\+\_\+tutorials/src/talker.cpp File Reference}
-\label{talker_8cpp}\index{/home/rajshinde/catkin\+\_\+ws/src/beginner\+\_\+tutorials/src/talker.\+cpp@{/home/rajshinde/catkin\+\_\+ws/src/beginner\+\_\+tutorials/src/talker.\+cpp}}
+\hypertarget{talker_8cpp}{}\section{src/talker.cpp File Reference}
+\label{talker_8cpp}\index{src/talker.\+cpp@{src/talker.\+cpp}}
 
 
 R\+OS Publisher Node.  
 
 
+{\ttfamily \#include $<$ros/ros.\+h$>$}\\*
+{\ttfamily \#include $<$std\+\_\+msgs/\+String.\+h$>$}\\*
+{\ttfamily \#include $<$tf/transform\+\_\+broadcaster.\+h$>$}\\*
 {\ttfamily \#include $<$sstream$>$}\\*
 {\ttfamily \#include $<$string$>$}\\*
-{\ttfamily \#include \char`\"{}ros/ros.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}std\+\_\+msgs/\+String.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}beginner\+\_\+tutorials/service\+String.\+h\char`\"{}}\\*
-Include dependency graph for talker.\+cpp\+:\nopagebreak
+Include dependency graph for talker.\+cpp\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{talker_8cpp__incl}
 \end{center}
 \end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_x}{X}
+\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,7 +34,7 @@ int \hyperlink{talker_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, c
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{talker_8cpp_a0ba76bcac54e80d914f29f0c76d947be}{std\+::string} {\bfseries temp} = \char`\"{}Default Message \char`\"{}\hypertarget{talker_8cpp_ab4746180b02b2a3ea6714c0cbbd890ed}{}\label{talker_8cpp_ab4746180b02b2a3ea6714c0cbbd890ed}
+struct \hyperlink{struct_x}{X} {\bfseries t}\hypertarget{talker_8cpp_a713043a7f1ef60dd29454fe66fb0db59}{}\label{talker_8cpp_a713043a7f1ef60dd29454fe66fb0db59}
 
 \end{DoxyCompactItemize}
 
@@ -42,13 +49,13 @@ M\+IT License, © 2019 Raj Shinde
 Raj Shinde 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
-11/04/2019 
+11/10/2019 
 \end{DoxyDate}
 \begin{DoxyVersion}{Version}
 1.\+0 
 \end{DoxyVersion}
-\hypertarget{talker_8cpp_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{talker_8cpp_DESCRIPTION}
-A Publisher node that publishes string message 
+\hypertarget{test_talker_8cpp_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{test_talker_8cpp_DESCRIPTION}
+A Publisher node that publishes tf frame 
 
 \subsection{Function Documentation}
 \index{talker.\+cpp@{talker.\+cpp}!main@{main}}
@@ -73,29 +80,7 @@ Main function for Publisher.
 \begin{DoxyReturn}{Returns}
 0 
 \end{DoxyReturn}
-The ros\+::init() function needs to see argc and argv so that it can perform any R\+OS arguments and name remapping that were provided at the command line. For programmatic remappings you can use a different version of init() which takes remappings directly, but for most command-\/line programs, passing argc and argv is the easiest way to do it. The third argument to init() is the name of the node.
-
-You must call one of the versions of ros\+::init() before using any other part of the R\+OS system.
-
-Display R\+OS L\+OG messae if rate is 0
-
-Node\+Handle is the main access point to communications with the R\+OS system. The first Node\+Handle constructed will fully initialize this node, and the last Node\+Handle destructed will close down the node.
-
-Server object used to call the service function
-
-The advertise() function is how you tell R\+OS that you want to publish on a given topic name. This invokes a call to the R\+OS master node, which keeps a registry of who is publishing and who is subscribing. After this advertise() call is made, the master node will notify anyone who is trying to subscribe to this topic name, and they will in turn negotiate a peer-\/to-\/peer connection with this node. advertise() returns a Publisher object which allows you to publish messages on that topic through a call to publish(). Once all copies of the returned Publisher object are destroyed, the topic will be automatically unadvertised.
-
-The second parameter to advertise() is the size of the message queue used for publishing messages. If messages are published more quickly than we can send them, the number here specifies how many messages to buffer up before throwing some away.
-
-A count of how many messages we have sent. This is used to create a unique string for each message.
-
-Display R\+OS L\+OG messages on rate status
-
-This is a message object. You stuff it with data, and then publish it.
-
-Display R\+OS L\+OG messages on string status
-
-The publish() function is how you send messages. The parameter is the message object. The type of this object must agree with the type given as a template parameter to the advertise$<$$>$() call, as was done in the constructor above.\index{talker.\+cpp@{talker.\+cpp}!string@{string}}
+\index{talker.\+cpp@{talker.\+cpp}!string@{string}}
 \index{string@{string}!talker.\+cpp@{talker.\+cpp}}
 \subsubsection[{\texorpdfstring{string(beginner\+\_\+tutorials\+::service\+String\+::\+Request \&req, beginner\+\_\+tutorials\+::service\+String\+::\+Response \&res)}{string(beginner_tutorials::serviceString::Request &req, beginner_tutorials::serviceString::Response &res)}}]{\setlength{\rightskip}{0pt plus 5cm}bool string (
 \begin{DoxyParamCaption}
@@ -117,4 +102,3 @@ Function to provide service functionality.
 \begin{DoxyReturn}{Returns}
 true 
 \end{DoxyReturn}
-Updating the string as per request

@@ -1,0 +1,140 @@
+\href{https://github.com/RajPShinde/begineer_tutorials/blob/master/LICENSE}{\tt } \href{https://github.com/RajPShinde/begineer_tutorials/blob/master/docs}{\tt }
+
+\subsection*{Authors}
+
+{\bfseries Raj Prakash Shinde} -\/ \href{https://github.com/RajPShinde}{\tt Git\+Hub} ~\newline
+I am a Masters in Robotics Engineering student at the University of Maryland, College Park. My primary area of interest are Legged Robotics and Automation.
+
+\subsection*{Overview}
+
+This is beginners tutorial for creating a simple R\+OS package called begineers\+\_\+tutorials with a Publisher \& Subscriber node. Where a publisher named talker, publishes a message and the subscriber called, listener hears the message. The message type here is a string. A talker node has a service that can be used to change the message content. A launch file can be used to launch both the nodes, which also passes the loop rate as an argument.
+
+\subsection*{Dependencies}
+
+
+\begin{DoxyEnumerate}
+\item Ubuntu 16.\+04
+\item R\+OS Kinetic
+\end{DoxyEnumerate}
+
+\subsection*{Build}
+
+Steps to build 
+\begin{DoxyCode}
+1 mkdir -p ~/catkin\_ws/src
+2 cd ~/catkin\_ws/
+3 catkin\_make
+4 source devel/setup.bash
+5 cd src/
+6 git clone https://github.com/RajPShinde/beginner\_tutorials
+7 cd ~/catkin\_ws/
+8 catkin\_make
+\end{DoxyCode}
+
+
+\subsection*{Run}
+
+
+\begin{DoxyEnumerate}
+\item Launch both nodes Individually Run roscore (Open a Terminal) 
+\begin{DoxyCode}
+1 cd ~/catkin\_ws/
+2 source ./devel/setup.bash
+3 roscore
+\end{DoxyCode}
+ Run talker node (Open a new Terminal) 
+\begin{DoxyCode}
+1 cd ~/catkin\_ws/
+2 source ./devel/setup.bash
+3 rosrun beginner\_tutorials talker 10
+\end{DoxyCode}
+ Run listener node (Open a new Terminal) 
+\begin{DoxyCode}
+1 cd ~/catkin\_ws/
+2 source ./devel/setup.bash
+3 rosrun beginner\_tutorials listener
+\end{DoxyCode}
+
+\item Launch both nodes with the launchfile (Open a new Terminal) 
+\begin{DoxyCode}
+1 cd ~/catkin\_ws/
+2 source ./devel/setup.bash
+3 roslaunch beginner\_tutorials nodelauncher.launch
+\end{DoxyCode}
+ You can change the frequency by passing an argumnet, default is 10 (Open a new Terminal) 
+\begin{DoxyCode}
+1 cd ~/catkin\_ws/
+2 source ./devel/setup.bash
+3 roslaunch beginner\_tutorials nodelauncher.launch rate:=8
+\end{DoxyCode}
+
+\item Run service to change string launch both nodes and then Open a new Terminal 
+\begin{DoxyCode}
+1 cd ~/catkin\_ws/
+2 source ./devel/setup.bash
+3 rosservice call /service\_string "Enter new string"
+\end{DoxyCode}
+
+\item To view Log levels using rqt console and rqt logger level Open a new Terminal 
+\begin{DoxyCode}
+1 rosrun rqt\_console rqt\_console
+\end{DoxyCode}
+ Open a new Terminal 
+\begin{DoxyCode}
+1 rosrun rqt\_logger\_level rqt\_logger\_level
+\end{DoxyCode}
+
+\item Inspecting TF Frames After launching both nodes using launch file, we can inspect the TF frames using tf\+\_\+echo and rqt\+\_\+tf\+\_\+tree (Open a new Terminal)
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+1 rosrun tf tf\_echo /world /talk
+\end{DoxyCode}
+ To genereate a pdf of tf frame 
+\begin{DoxyCode}
+1 rosrun tf view\_frames
+\end{DoxyCode}
+ Open a new Terminal 
+\begin{DoxyCode}
+1 rosrun rqt\_tf\_tree rqt\_tf\_tree
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item Run Test Open a new Terminal 
+\begin{DoxyCode}
+1 cd ~/catkin\_ws
+2 source ./devel/setup.bash
+3 catkin\_make run\_tests\_beginner\_tutorials
+4 rostest beginner\_tutorials testlauncher.launch
+\end{DoxyCode}
+
+\item Record in Rosbag To record in a rosbag, pass a true argument to the launch file(\+Open a new Terminal) 
+\begin{DoxyCode}
+1 roslaunch beginner\_tutorials nodelauncher.launch recordbag:=true
+\end{DoxyCode}
+ To avoid recording, either pass false or don\textquotesingle{}t pass any argument 
+\begin{DoxyCode}
+1 roslaunch beginner\_tutorials nodelauncher.launch recordbag:=false
+\end{DoxyCode}
+ OR 
+\begin{DoxyCode}
+1 roslaunch beginner\_tutorials nodelauncher.launch
+\end{DoxyCode}
+
+\item Use Rosbag First launch the listener node and then Open a new Terminal and play rosbag 
+\begin{DoxyCode}
+1 cd ~/catkin\_ws/src/beginner\_tutorials/results
+2 rosbag play recording.bag
+\end{DoxyCode}
+ You can see that the listener node can hear the rosbag data of previously recorded talker node.
+\end{DoxyEnumerate}
+
+\subsection*{Reference}
+
+
+\begin{DoxyItemize}
+\item \href{http://wiki.ros.org/}{\tt http\+://wiki.\+ros.\+org/} 
+\end{DoxyItemize}

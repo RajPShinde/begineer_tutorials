@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
-    <compoundname>/home/rajshinde/catkin_ws/src/beginner_tutorials/src</compoundname>
+    <compoundname>src</compoundname>
     <innerfile refid="listener_8cpp">listener.cpp</innerfile>
     <innerfile refid="talker_8cpp">talker.cpp</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/rajshinde/catkin_ws/src/beginner_tutorials/src/"/>
+    <location file="src/"/>
   </compounddef>
 </doxygen>

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="md_README" kind="page">
+    <compoundname>md_README</compoundname>
+    <title>beginner_tutorials</title>
+    <detaileddescription>
+<para><ulink url="https://github.com/RajPShinde/begineer_tutorials/blob/master/LICENSE"></ulink> <ulink url="https://github.com/RajPShinde/begineer_tutorials/blob/master/docs"></ulink></para><para><heading level="2">Authors</heading>
+</para><para><bold>Raj Prakash Shinde</bold> - <ulink url="https://github.com/RajPShinde">GitHub</ulink> <linebreak/>
+I am a Masters in Robotics Engineering student at the University of Maryland, College Park. My primary area of interest are Legged Robotics and Automation.</para><para><heading level="2">Overview</heading>
+</para><para>This is beginners tutorial for creating a simple ROS package called begineers_tutorials with a Publisher &amp; Subscriber node. Where a publisher named talker, publishes a message and the subscriber called, listener hears the message. The message type here is a string. A talker node has a service that can be used to change the message content. A launch file can be used to launch both the nodes, which also passes the loop rate as an argument.</para><para><heading level="2">Dependencies</heading>
+</para><para><orderedlist>
+<listitem><para>Ubuntu 16.04</para></listitem><listitem><para>ROS Kinetic</para></listitem></orderedlist>
+</para><para><heading level="2">Build</heading>
+</para><para>Steps to build <programlisting><codeline><highlight class="normal">mkdir<sp/>-p<sp/>~/catkin_ws/src</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
+<codeline><highlight class="normal">catkin_make</highlight></codeline>
+<codeline><highlight class="normal">source<sp/>devel/setup.bash</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>src/</highlight></codeline>
+<codeline><highlight class="normal">git<sp/>clone<sp/>https://github.com/RajPShinde/beginner_tutorials</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
+<codeline><highlight class="normal">catkin_make</highlight></codeline>
+</programlisting></para><para><heading level="2">Run</heading>
+</para><para><orderedlist>
+<listitem><para>Launch both nodes Individually Run roscore (Open a Terminal) <programlisting><codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
+<codeline><highlight class="normal">source<sp/>./devel/setup.bash</highlight></codeline>
+<codeline><highlight class="normal">roscore</highlight></codeline>
+</programlisting> Run talker node (Open a new Terminal) <programlisting><codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
+<codeline><highlight class="normal">source<sp/>./devel/setup.bash</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>beginner_tutorials<sp/>talker<sp/>10</highlight></codeline>
+</programlisting> Run listener node (Open a new Terminal) <programlisting><codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
+<codeline><highlight class="normal">source<sp/>./devel/setup.bash</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>beginner_tutorials<sp/>listener</highlight></codeline>
+</programlisting></para></listitem><listitem><para>Launch both nodes with the launchfile (Open a new Terminal) <programlisting><codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
+<codeline><highlight class="normal">source<sp/>./devel/setup.bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>beginner_tutorials<sp/>nodelauncher.launch</highlight></codeline>
+</programlisting> You can change the frequency by passing an argumnet, default is 10 (Open a new Terminal) <programlisting><codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
+<codeline><highlight class="normal">source<sp/>./devel/setup.bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>beginner_tutorials<sp/>nodelauncher.launch<sp/>rate:=8</highlight></codeline>
+</programlisting></para></listitem><listitem><para>Run service to change string launch both nodes and then Open a new Terminal <programlisting><codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
+<codeline><highlight class="normal">source<sp/>./devel/setup.bash</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/service_string<sp/>&quot;Enter<sp/>new<sp/>string&quot;</highlight></codeline>
+</programlisting></para></listitem><listitem><para>To view Log levels using rqt console and rqt logger level Open a new Terminal <programlisting><codeline><highlight class="normal">rosrun<sp/>rqt_console<sp/>rqt_console</highlight></codeline>
+</programlisting> Open a new Terminal <programlisting><codeline><highlight class="normal">rosrun<sp/>rqt_logger_level<sp/>rqt_logger_level</highlight></codeline>
+</programlisting></para></listitem><listitem><para>Inspecting TF Frames After launching both nodes using launch file, we can inspect the TF frames using tf_echo and rqt_tf_tree (Open a new Terminal)</para></listitem></orderedlist>
+</para><para><programlisting><codeline><highlight class="normal">rosrun<sp/>tf<sp/>tf_echo<sp/>/world<sp/>/talk</highlight></codeline>
+</programlisting> To genereate a pdf of tf frame <programlisting><codeline><highlight class="normal">rosrun<sp/>tf<sp/>view_frames</highlight></codeline>
+</programlisting> Open a new Terminal <programlisting><codeline><highlight class="normal">rosrun<sp/>rqt_tf_tree<sp/>rqt_tf_tree</highlight></codeline>
+</programlisting></para><para><orderedlist>
+<listitem><para>Run Test Open a new Terminal <programlisting><codeline><highlight class="normal">cd<sp/>~/catkin_ws</highlight></codeline>
+<codeline><highlight class="normal">source<sp/>./devel/setup.bash</highlight></codeline>
+<codeline><highlight class="normal">catkin_make<sp/>run_tests_beginner_tutorials</highlight></codeline>
+<codeline><highlight class="normal">rostest<sp/>beginner_tutorials<sp/>testlauncher.launch</highlight></codeline>
+</programlisting></para></listitem><listitem><para>Record in Rosbag To record in a rosbag, pass a true argument to the launch file(Open a new Terminal) <programlisting><codeline><highlight class="normal">roslaunch<sp/>beginner_tutorials<sp/>nodelauncher.launch<sp/>recordbag:=true</highlight></codeline>
+</programlisting> To avoid recording, either pass false or don&apos;t pass any argument <programlisting><codeline><highlight class="normal">roslaunch<sp/>beginner_tutorials<sp/>nodelauncher.launch<sp/>recordbag:=false</highlight></codeline>
+</programlisting> OR <programlisting><codeline><highlight class="normal">roslaunch<sp/>beginner_tutorials<sp/>nodelauncher.launch</highlight></codeline>
+</programlisting></para></listitem><listitem><para>Use Rosbag First launch the listener node and then Open a new Terminal and play rosbag <programlisting><codeline><highlight class="normal">cd<sp/>~/catkin_ws/src/beginner_tutorials/results</highlight></codeline>
+<codeline><highlight class="normal">rosbag<sp/>play<sp/>recording.bag</highlight></codeline>
+</programlisting> You can see that the listener node can hear the rosbag data of previously recorded talker node.</para></listitem></orderedlist>
+</para><para><heading level="2">Reference</heading>
+</para><para><itemizedlist>
+<listitem><para><ulink url="http://wiki.ros.org/">http://wiki.ros.org/</ulink> </para></listitem></itemizedlist>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

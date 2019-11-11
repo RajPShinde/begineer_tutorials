@@ -37,22 +37,48 @@
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>Run</highlight></codeline>
-<codeline><highlight class="normal">1.<sp/>Launch<sp/>both<sp/>nodes<sp/>with<sp/>the<sp/>launchfile</highlight></codeline>
-<codeline><highlight class="normal">Open<sp/>a<sp/>new<sp/>Terminal</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>Launch<sp/>both<sp/>nodes<sp/>Individually</highlight></codeline>
+<codeline><highlight class="normal">Run<sp/>roscore<sp/>(Open<sp/>a<sp/>Terminal)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
+<codeline><highlight class="normal">source<sp/>./devel/setup.bash</highlight></codeline>
+<codeline><highlight class="normal">roscore</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">Run<sp/>talker<sp/>node<sp/>(Open<sp/>a<sp/>new<sp/>Terminal)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
+<codeline><highlight class="normal">source<sp/>./devel/setup.bash</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>beginner_tutorials<sp/>talker<sp/>10</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">Run<sp/>listener<sp/>node<sp/>(Open<sp/>a<sp/>new<sp/>Terminal)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
+<codeline><highlight class="normal">source<sp/>./devel/setup.bash</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>beginner_tutorials<sp/>listener</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">2.<sp/>Launch<sp/>both<sp/>nodes<sp/>with<sp/>the<sp/>launchfile</highlight></codeline>
+<codeline><highlight class="normal">(Open<sp/>a<sp/>new<sp/>Terminal)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
+<codeline><highlight class="normal">source<sp/>./devel/setup.bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>beginner_tutorials<sp/>nodelauncher.launch</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">You<sp/>can<sp/>change<sp/>the<sp/>frequency<sp/>by<sp/>passing<sp/>an<sp/>argumnet,<sp/>default<sp/>is<sp/>10<sp/>(Open<sp/>a<sp/>new<sp/>Terminal)</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
 <codeline><highlight class="normal">source<sp/>./devel/setup.bash</highlight></codeline>
 <codeline><highlight class="normal">roslaunch<sp/>beginner_tutorials<sp/>nodelauncher.launch<sp/>rate:=8</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">2.<sp/>Run<sp/>service<sp/>to<sp/>change<sp/>string</highlight></codeline>
-<codeline><highlight class="normal">Open<sp/>a<sp/>new<sp/>Terminal</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>Run<sp/>service<sp/>to<sp/>change<sp/>string</highlight></codeline>
+<codeline><highlight class="normal">launch<sp/>both<sp/>nodes<sp/>and<sp/>then<sp/>Open<sp/>a<sp/>new<sp/>Terminal</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline><highlight class="normal">cd<sp/>~/catkin_ws/</highlight></codeline>
 <codeline><highlight class="normal">source<sp/>./devel/setup.bash</highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/service_string<sp/>&quot;Enter<sp/>new<sp/>string&quot;</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
-<codeline><highlight class="normal">3.<sp/>View<sp/>Log<sp/>levels<sp/>using<sp/>rqt<sp/>console<sp/>and<sp/>rqt<sp/>logger<sp/>level</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>To<sp/>view<sp/>Log<sp/>levels<sp/>using<sp/>rqt<sp/>console<sp/>and<sp/>rqt<sp/>logger<sp/>level</highlight></codeline>
 <codeline><highlight class="normal">Open<sp/>a<sp/>new<sp/>Terminal</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline><highlight class="normal">rosrun<sp/>rqt_console<sp/>rqt_console</highlight></codeline>
@@ -61,10 +87,53 @@
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline><highlight class="normal">rosrun<sp/>rqt_logger_level<sp/>rqt_logger_level</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">5.<sp/>Inspecting<sp/>TF<sp/>Frames</highlight></codeline>
+<codeline><highlight class="normal">After<sp/>launching<sp/>both<sp/>nodes<sp/>using<sp/>launch<sp/>file,<sp/>we<sp/>can<sp/>inspect<sp/>the<sp/>TF<sp/>frames<sp/>using<sp/>tf_echo<sp/>and<sp/>rqt_tf_tree<sp/>(Open<sp/>a<sp/>new<sp/>Terminal)</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">##<sp/>References</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>tf<sp/>tf_echo<sp/>/world<sp/>/talk</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">To<sp/>genereate<sp/>a<sp/>pdf<sp/>of<sp/>tf<sp/>frame</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>tf<sp/>view_frames</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">Open<sp/>a<sp/>new<sp/>Terminal</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>rqt_tf_tree<sp/>rqt_tf_tree</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">6.<sp/>Run<sp/>Test</highlight></codeline>
+<codeline><highlight class="normal">Open<sp/>a<sp/>new<sp/>Terminal</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>~/catkin_ws</highlight></codeline>
+<codeline><highlight class="normal">source<sp/>./devel/setup.bash</highlight></codeline>
+<codeline><highlight class="normal">catkin_make<sp/>run_tests_beginner_tutorials</highlight></codeline>
+<codeline><highlight class="normal">rostest<sp/>beginner_tutorials<sp/>testlauncher.launch</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">7.<sp/>Record<sp/>in<sp/>Rosbag</highlight></codeline>
+<codeline><highlight class="normal">To<sp/>record<sp/>in<sp/>a<sp/>rosbag,<sp/>pass<sp/>a<sp/>true<sp/>argument<sp/>to<sp/>the<sp/>launch<sp/>file(Open<sp/>a<sp/>new<sp/>Terminal)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>beginner_tutorials<sp/>nodelauncher.launch<sp/>recordbag:=true</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">To<sp/>avoid<sp/>recording,<sp/>either<sp/>pass<sp/>false<sp/>or<sp/>don&apos;t<sp/>pass<sp/>any<sp/>argument</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>beginner_tutorials<sp/>nodelauncher.launch<sp/>recordbag:=false</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">OR</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>beginner_tutorials<sp/>nodelauncher.launch</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">8.<sp/>Use<sp/>Rosbag</highlight></codeline>
+<codeline><highlight class="normal">First<sp/>launch<sp/>the<sp/>listener<sp/>node<sp/>and<sp/>then<sp/>Open<sp/>a<sp/>new<sp/>Terminal<sp/>and<sp/>play<sp/>rosbag</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>~/catkin_ws/src/beginner_tutorials/results</highlight></codeline>
+<codeline><highlight class="normal">rosbag<sp/>play<sp/>recording.bag</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">You<sp/>can<sp/>see<sp/>that<sp/>the<sp/>listener<sp/>node<sp/>can<sp/>hear<sp/>the<sp/>rosbag<sp/>data<sp/>of<sp/>previously<sp/>recorded<sp/>talker<sp/>node.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Reference</highlight></codeline>
 <codeline><highlight class="normal">*<sp/>http://wiki.ros.org/</highlight></codeline>
     </programlisting>
-    <location file="/home/rajshinde/catkin_ws/src/beginner_tutorials/README.md"/>
+    <location file="README.md"/>
   </compounddef>
 </doxygen>

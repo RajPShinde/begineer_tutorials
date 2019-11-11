@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct_x" kind="struct" language="C++" prot="public">
+    <compoundname>X</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_x_1a08b1cca1250e07bb26e61316d0dd8ac3" prot="public" static="no" mutable="no">
+        <type><ref refid="talker_8cpp_1a0ba76bcac54e80d914f29f0c76d947be" kindref="member">std::string</ref></type>
+        <definition>std::string X::temp</definition>
+        <argsstring></argsstring>
+        <name>temp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/talker.cpp" line="47" column="1" bodyfile="src/talker.cpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/talker.cpp" line="46" column="1" bodyfile="src/talker.cpp" bodystart="46" bodyend="48"/>
+    <listofallmembers>
+      <member refid="struct_x_1a08b1cca1250e07bb26e61316d0dd8ac3" prot="public" virt="non-virtual"><scope>X</scope><name>temp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
