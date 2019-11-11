@@ -28,22 +28,48 @@ catkin_make
 ```
 
 ## Run
-1. Launch both nodes with the launchfile
-Open a new Terminal
+1. Launch both nodes Individually
+Run roscore (Open a Terminal)
+```
+cd ~/catkin_ws/
+source ./devel/setup.bash
+roscore
+```
+Run talker node (Open a new Terminal)
+```
+cd ~/catkin_ws/
+source ./devel/setup.bash
+rosrun beginner_tutorials talker 10
+```
+Run listener node (Open a new Terminal)
+```
+cd ~/catkin_ws/
+source ./devel/setup.bash
+rosrun beginner_tutorials listener
+```
+
+2. Launch both nodes with the launchfile
+(Open a new Terminal)
+```
+cd ~/catkin_ws/
+source ./devel/setup.bash
+roslaunch beginner_tutorials nodelauncher.launch
+```
+You can change the frequency by passing an argumnet, default is 10 (Open a new Terminal)
 ```
 cd ~/catkin_ws/
 source ./devel/setup.bash
 roslaunch beginner_tutorials nodelauncher.launch rate:=8
 ```
 
-2. Run service to change string
-Open a new Terminal
+3. Run service to change string
+launch both nodes and then Open a new Terminal
 ```
 cd ~/catkin_ws/
 source ./devel/setup.bash
 rosservice call /service_string "Enter new string"
 ```
-3. View Log levels using rqt console and rqt logger level
+4. To view Log levels using rqt console and rqt logger level
 Open a new Terminal
 ```
 rosrun rqt_console rqt_console
@@ -52,6 +78,49 @@ Open a new Terminal
 ```
 rosrun rqt_logger_level rqt_logger_level
 ```
+5. Inspecting TF Frames
+After launching both nodes using launch file, we can inspect the TF frames using tf_echo and rqt_tf_tree (Open a new Terminal)
+
+```
+rosrun tf tf_echo /world /talk
+```
+To genereate a pdf of tf frame
+```
+rosrun tf view_frames
+```
+Open a new Terminal
+```
+rosrun rqt_tf_tree rqt_tf_tree
+```
+
+6. Run Test
+Open a new Terminal
+```
+cd ~/catkin_ws
+source ./devel/setup.bash
+catkin_make run_tests_beginner_tutorials
+rostest beginner_tutorials testlauncher.launch
+```
+7. Record in Rosbag
+To record in a rosbag, pass a true argument to the launch file(Open a new Terminal)
+```
+roslaunch beginner_tutorials nodelauncher.launch recordbag:=true
+```
+To avoid recording, either pass false or don't pass any argument
+```
+roslaunch beginner_tutorials nodelauncher.launch recordbag:=false
+```
+OR
+```
+roslaunch beginner_tutorials nodelauncher.launch
+```
+8. Use Rosbag
+First launch the listener node and then Open a new Terminal and play rosbag
+```
+cd ~/catkin_ws/src/beginner_tutorials/results
+rosbag play recording.bag
+```
+You can see that the listener node can hear the rosbag data of previously recorded talker node.
 
 ## Reference
 * http://wiki.ros.org/
