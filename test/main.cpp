@@ -1,3 +1,5 @@
+
+
 /**
  *  @copyright MIT License, © 2019 Raj Shinde
  *  @file    main.cpp
@@ -20,9 +22,7 @@
 int main(int argc, char** argv) {
 ::testing::InitGoogleTest(&argc, argv);
 
-/**
-*   @brief Initializing and naming a node
-*/
+// Initializing and naming a node
 ros::init(argc, argv, "tester");
 return RUN_ALL_TESTS();
 }
