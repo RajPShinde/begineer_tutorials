@@ -77,7 +77,7 @@ int main(int argc, char **argv) {
    * You must call one of the versions of ros::init() before using any other
    * part of the ROS system.
    */
-  auto rate;
+  int rate;
   rate = atoi(argv[1]);
 
   /**
@@ -127,7 +127,7 @@ int main(int argc, char **argv) {
    * A count of how many messages we have sent. This is used to create
    * a unique string for each message.
    */
-  auto count = 0;
+  int count = 0;
   while (ros::ok()) {
     /**
      * Display ROS LOG messages on rate status

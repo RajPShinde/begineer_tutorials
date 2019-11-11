@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+  <node
+    pkg="beginner_tutorials"
+    type="talker"
+    name="pubTalker"
+    respawn="true"
+    output="screen"
+    args="10"
+  />
+  <test 
+    pkg="beginner_tutorials" 
+    test-name="testTalker" 
+    type="testTalker" 
+  />
+</launch>
