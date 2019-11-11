@@ -56,3 +56,6 @@ target_link_libraries(talker ${catkin_LIBRARIES})
 
 add_executable(listener src/listener.cpp)
 target_link_libraries(listener ${catkin_LIBRARIES})
+
+add_rostest_gtest(testTalker test/main.cpp test/testTalker.cpp)
+catkin_add_gtest(testTalker test/main.cpp test/testTalker.cpp)

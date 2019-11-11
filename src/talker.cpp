@@ -36,15 +36,13 @@
 #include <sstream>
 #include <string>
 
-#include "ros/ros.h"
-#include "std_msgs/String.h"
+#include <ros/ros.h>
+#include <std_msgs/String.h>
 #include <tf/transform_broadcaster.h>
-#include <turtlesim/Pose.h>
-
 
 #include "beginner_tutorials/serviceString.h"
 
-extern std::string temp = "Default Message ";
+std::string temp = "Default Message ";
 
 /**
  * @brief Function to provide service functionality
@@ -79,7 +77,7 @@ int main(int argc, char **argv) {
    * You must call one of the versions of ros::init() before using any other
    * part of the ROS system.
    */
-  int rate;
+  auto rate;
   rate = atoi(argv[1]);
 
   /**
@@ -129,7 +127,7 @@ int main(int argc, char **argv) {
    * A count of how many messages we have sent. This is used to create
    * a unique string for each message.
    */
-  int count = 0;
+  auto count = 0;
   while (ros::ok()) {
     /**
      * Display ROS LOG messages on rate status
